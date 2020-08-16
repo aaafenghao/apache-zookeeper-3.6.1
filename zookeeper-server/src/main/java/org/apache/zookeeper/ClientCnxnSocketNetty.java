@@ -52,7 +52,6 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 import org.apache.zookeeper.ClientCnxn.EndOfStreamException;
 import org.apache.zookeeper.ClientCnxn.Packet;
-import org.apache.zookeeper.client.ZKClientConfig;
 import org.apache.zookeeper.common.ClientX509Util;
 import org.apache.zookeeper.common.NettyUtils;
 import org.apache.zookeeper.common.X509Util;

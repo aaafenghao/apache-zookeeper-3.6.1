@@ -97,6 +97,7 @@ public class DatadirCleanupManager {
             return;
         }
         // Don't schedule the purge task with zero or negative purge interval.
+        // 不要用0或者负的清理间隔来安排清理任务
         if (purgeInterval <= 0) {
             LOG.info("Purge task is not scheduled.");
             return;
@@ -104,6 +105,7 @@ public class DatadirCleanupManager {
 
         timer = new Timer("PurgeTask", true);
         TimerTask task = new PurgeTask(dataLogDir, snapDir, snapRetainCount);
+        //固定频率的定时任务
         timer.scheduleAtFixedRate(task, 0, TimeUnit.HOURS.toMillis(purgeInterval));
 
         purgeTaskStatus = PurgeTaskStatus.STARTED;

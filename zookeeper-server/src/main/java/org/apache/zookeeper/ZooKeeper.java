@@ -45,11 +45,6 @@ import org.apache.zookeeper.KeeperException.NoWatcherException;
 import org.apache.zookeeper.OpResult.ErrorResult;
 import org.apache.zookeeper.Watcher.Event.EventType;
 import org.apache.zookeeper.Watcher.WatcherType;
-import org.apache.zookeeper.client.ConnectStringParser;
-import org.apache.zookeeper.client.HostProvider;
-import org.apache.zookeeper.client.StaticHostProvider;
-import org.apache.zookeeper.client.ZKClientConfig;
-import org.apache.zookeeper.client.ZooKeeperSaslClient;
 import org.apache.zookeeper.common.PathUtils;
 import org.apache.zookeeper.data.ACL;
 import org.apache.zookeeper.data.Stat;
@@ -1716,6 +1711,7 @@ public class ZooKeeper implements AutoCloseable {
         final String clientPath = path;
         PathUtils.validatePath(clientPath, createMode.isSequential());
         EphemeralType.validateTTL(createMode, -1);
+        //验证ACL
         validateACL(acl);
 
         final String serverPath = prependChroot(clientPath);

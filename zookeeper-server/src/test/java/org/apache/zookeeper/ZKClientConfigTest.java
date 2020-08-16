@@ -16,15 +16,15 @@
  * limitations under the License.
  */
 
-package org.apache.zookeeper.client;
+package org.apache.zookeeper;
 
-import static org.apache.zookeeper.client.ZKClientConfig.DISABLE_AUTO_WATCH_RESET;
-import static org.apache.zookeeper.client.ZKClientConfig.ENABLE_CLIENT_SASL_KEY;
-import static org.apache.zookeeper.client.ZKClientConfig.LOGIN_CONTEXT_NAME_KEY;
-import static org.apache.zookeeper.client.ZKClientConfig.SECURE_CLIENT;
-import static org.apache.zookeeper.client.ZKClientConfig.ZK_SASL_CLIENT_USERNAME;
-import static org.apache.zookeeper.client.ZKClientConfig.ZOOKEEPER_CLIENT_CNXN_SOCKET;
-import static org.apache.zookeeper.client.ZKClientConfig.ZOOKEEPER_SERVER_REALM;
+import static org.apache.zookeeper.ZKClientConfig.DISABLE_AUTO_WATCH_RESET;
+import static org.apache.zookeeper.ZKClientConfig.ENABLE_CLIENT_SASL_KEY;
+import static org.apache.zookeeper.ZKClientConfig.LOGIN_CONTEXT_NAME_KEY;
+import static org.apache.zookeeper.ZKClientConfig.SECURE_CLIENT;
+import static org.apache.zookeeper.ZKClientConfig.ZK_SASL_CLIENT_USERNAME;
+import static org.apache.zookeeper.ZKClientConfig.ZOOKEEPER_CLIENT_CNXN_SOCKET;
+import static org.apache.zookeeper.ZKClientConfig.ZOOKEEPER_SERVER_REALM;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;

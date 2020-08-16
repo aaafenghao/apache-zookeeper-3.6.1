@@ -20,7 +20,7 @@ package org.apache.zookeeper.test;
 
 import static org.junit.Assert.assertEquals;
 import org.apache.zookeeper.ZKTestCase;
-import org.apache.zookeeper.client.ConnectStringParser;
+import org.apache.zookeeper.ConnectStringParser;
 import org.junit.Test;
 
 public class ConnectStringParserTest extends ZKTestCase {

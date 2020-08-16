@@ -661,10 +661,11 @@ public class ZooKeeperServer implements SessionExpirer, ServerStats.Provider {
             createSessionTracker();
         }
         startSessionTracker();
+        //启动请求处理线程
         setupRequestProcessors();
-
+        //丢弃一些无用的请求
         startRequestThrottler();
-
+        //注册JMX
         registerJMX();
 
         startJvmPauseMonitor();
@@ -694,9 +695,13 @@ public class ZooKeeperServer implements SessionExpirer, ServerStats.Provider {
     protected void setupRequestProcessors() {
         RequestProcessor finalProcessor = new FinalRequestProcessor(this);
         RequestProcessor syncProcessor = new SyncRequestProcessor(this, finalProcessor);
+        //
         ((SyncRequestProcessor) syncProcessor).start();
         firstProcessor = new PrepRequestProcessor(this, syncProcessor);
+        //循环获取
         ((PrepRequestProcessor) firstProcessor).start();
+        //组成了一条链路
+        //Prep-->Sync-->Final
     }
 
     public ZooKeeperServerListener getZooKeeperServerListener() {

@@ -54,7 +54,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLServerSocketFactory;
 import org.apache.zookeeper.PortAssignment;
-import org.apache.zookeeper.client.ZKClientConfig;
+import org.apache.zookeeper.ZKClientConfig;
 import org.apache.zookeeper.common.QuorumX509Util;
 import org.apache.zookeeper.server.ServerCnxnFactory;
 import org.apache.zookeeper.test.ClientBase;

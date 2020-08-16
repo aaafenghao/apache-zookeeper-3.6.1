@@ -26,7 +26,7 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
-import org.apache.zookeeper.client.ZKClientConfig;
+import org.apache.zookeeper.ZKClientConfig;
 import org.apache.zookeeper.common.StringUtils;
 import org.apache.zookeeper.data.Stat;
 import org.apache.zookeeper.proto.GetDataResponse;

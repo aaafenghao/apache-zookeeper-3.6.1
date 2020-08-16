@@ -22,7 +22,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import org.apache.zookeeper.ZKTestCase;
-import org.apache.zookeeper.client.ZKClientConfig;
+import org.apache.zookeeper.ZKClientConfig;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -63,7 +63,6 @@ import org.apache.zookeeper.cli.SetQuotaCommand;
 import org.apache.zookeeper.cli.StatCommand;
 import org.apache.zookeeper.cli.SyncCommand;
 import org.apache.zookeeper.cli.VersionCommand;
-import org.apache.zookeeper.client.ZKClientConfig;
 import org.apache.zookeeper.server.ExitCode;
 import org.apache.zookeeper.server.quorum.QuorumPeerConfig;
 import org.apache.zookeeper.util.ServiceUtils;

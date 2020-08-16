@@ -151,6 +151,7 @@ public class PrepRequestProcessor extends ZooKeeperCriticalThread implements Req
                 }
 
                 request.prepStartTime = Time.currentElapsedTime();
+                //处理请求
                 pRequest(request);
             }
         } catch (Exception e) {

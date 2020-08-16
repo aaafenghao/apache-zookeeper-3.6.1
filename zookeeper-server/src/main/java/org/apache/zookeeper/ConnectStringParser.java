@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.apache.zookeeper.client;
+package org.apache.zookeeper;
 
 import static org.apache.zookeeper.common.StringUtils.split;
 import java.net.InetSocketAddress;

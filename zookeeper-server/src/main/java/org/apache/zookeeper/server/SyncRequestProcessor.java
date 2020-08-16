@@ -179,6 +179,7 @@ public class SyncRequestProcessor extends ZooKeeperCriticalThread implements Req
 
                 // track the number of records written to the log
                 if (zks.getZKDatabase().append(si)) {
+                    //需要快照
                     if (shouldSnapshot()) {
                         resetSnapshotStats();
                         // roll the log

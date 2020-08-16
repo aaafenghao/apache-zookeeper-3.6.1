@@ -65,9 +65,6 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooDefs.OpCode;
 import org.apache.zookeeper.ZooKeeper.States;
 import org.apache.zookeeper.ZooKeeper.WatchRegistration;
-import org.apache.zookeeper.client.HostProvider;
-import org.apache.zookeeper.client.ZKClientConfig;
-import org.apache.zookeeper.client.ZooKeeperSaslClient;
 import org.apache.zookeeper.common.Time;
 import org.apache.zookeeper.proto.AuthPacket;
 import org.apache.zookeeper.proto.ConnectRequest;
@@ -938,7 +935,7 @@ public class ClientCnxn {
                                           + " expected Xid " + packet.requestHeader.getXid()
                                           + " for a packet with details: " + packet);
                 }
-
+                //设置响应包信息
                 packet.replyHeader.setXid(replyHdr.getXid());
                 packet.replyHeader.setErr(replyHdr.getErr());
                 packet.replyHeader.setZxid(replyHdr.getZxid());
@@ -1166,8 +1163,10 @@ public class ClientCnxn {
             long lastPingRwServer = Time.currentElapsedTime();
             final int MAX_SEND_PING_INTERVAL = 10000; //10 seconds
             InetSocketAddress serverAddress = null;
+            //如果状态是激活状态,死循环
             while (state.isAlive()) {
                 try {
+                    //如果状态是非连接状态,尝试重新连接
                     if (!clientCnxnSocket.isConnected()) {
                         // don't re-establish connection if we are closing
                         if (closing) {
@@ -1182,7 +1181,7 @@ public class ClientCnxn {
                         startConnect(serverAddress);
                         clientCnxnSocket.updateLastSendAndHeard();
                     }
-
+                    //已经连接
                     if (state.isConnected()) {
                         // determine whether we need to send an AuthFailed event.
                         if (zooKeeperSaslClient != null) {
@@ -1258,7 +1257,7 @@ public class ClientCnxn {
                         }
                         to = Math.min(to, pingRwTimeout - idlePingRwServer);
                     }
-
+                    //重要
                     clientCnxnSocket.doTransport(to, pendingQueue, ClientCnxn.this);
                 } catch (Throwable e) {
                     if (closing) {
@@ -1540,6 +1539,7 @@ public class ClientCnxn {
         WatchRegistration watchRegistration,
         WatchDeregistration watchDeregistration) throws InterruptedException {
         ReplyHeader r = new ReplyHeader();
+        //添加包到outgoingQueue
         Packet packet = queuePacket(
             h,
             r,
@@ -1651,9 +1651,11 @@ public class ClientCnxn {
                 if (h.getType() == OpCode.closeSession) {
                     closing = true;
                 }
+                //添加到队列中
                 outgoingQueue.add(packet);
             }
         }
+        //感觉像是信号,告诉Socket包已经添加
         sendThread.getClientCnxnSocket().packetAdded();
         return packet;
     }

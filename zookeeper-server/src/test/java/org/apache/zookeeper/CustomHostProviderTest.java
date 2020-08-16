@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.apache.zookeeper.client.HostProvider;
+
 import org.apache.zookeeper.test.ClientBase;
 import org.junit.Test;
 

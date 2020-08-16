@@ -18,7 +18,7 @@
 
 package org.apache.zookeeper.test;
 
-import static org.apache.zookeeper.client.ZKClientConfig.LOGIN_CONTEXT_NAME_KEY;
+import static org.apache.zookeeper.ZKClientConfig.LOGIN_CONTEXT_NAME_KEY;
 import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.FileWriter;
@@ -33,7 +33,7 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.PortAssignment;
 import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
-import org.apache.zookeeper.client.ZKClientConfig;
+import org.apache.zookeeper.ZKClientConfig;
 import org.apache.zookeeper.common.ClientX509Util;
 import org.apache.zookeeper.server.ServerCnxnFactory;
 import org.junit.After;

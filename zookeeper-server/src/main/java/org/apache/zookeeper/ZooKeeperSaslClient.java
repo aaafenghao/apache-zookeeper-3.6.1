@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.apache.zookeeper.client;
+package org.apache.zookeeper;
 
 import java.io.IOException;
 import java.security.PrivilegedActionException;
@@ -27,12 +27,8 @@ import javax.security.auth.login.Configuration;
 import javax.security.auth.login.LoginException;
 import javax.security.sasl.SaslClient;
 import javax.security.sasl.SaslException;
-import org.apache.zookeeper.AsyncCallback;
-import org.apache.zookeeper.ClientCnxn;
-import org.apache.zookeeper.Login;
-import org.apache.zookeeper.SaslClientCallbackHandler;
+
 import org.apache.zookeeper.Watcher.Event.KeeperState;
-import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.data.Stat;
 import org.apache.zookeeper.proto.GetSASLRequest;
 import org.apache.zookeeper.proto.SetSASLResponse;

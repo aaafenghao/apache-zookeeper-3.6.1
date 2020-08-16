@@ -21,7 +21,7 @@ package org.apache.zookeeper;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.io.IOException;
-import org.apache.zookeeper.client.ZKClientConfig;
+
 import org.apache.zookeeper.common.ZKConfig;
 import org.apache.zookeeper.test.TestByteBufAllocator;
 import org.junit.After;

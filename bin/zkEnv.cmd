@@ -52,3 +52,5 @@ if "%JAVA_HOME:~-1%" EQU "\" set "JAVA_HOME=%JAVA_HOME:~0,-1%"
  
 set JAVA="%JAVA_HOME%"\bin\java
 
+
+

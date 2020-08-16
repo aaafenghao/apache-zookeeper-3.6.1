@@ -18,7 +18,7 @@
 
 package org.apache.zookeeper.test;
 
-import static org.apache.zookeeper.client.ZKClientConfig.ZOOKEEPER_CLIENT_CNXN_SOCKET;
+import static org.apache.zookeeper.ZKClientConfig.ZOOKEEPER_CLIENT_CNXN_SOCKET;
 import static org.junit.Assert.assertTrue;
 import org.apache.zookeeper.ZKTestCase;
 import org.apache.zookeeper.server.ServerCnxnFactory;

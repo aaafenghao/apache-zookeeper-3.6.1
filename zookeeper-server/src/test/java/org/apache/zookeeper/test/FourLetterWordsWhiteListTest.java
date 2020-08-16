@@ -18,7 +18,7 @@
 
 package org.apache.zookeeper.test;
 
-import static org.apache.zookeeper.client.FourLetterWordMain.send4LetterWord;
+import static org.apache.zookeeper.FourLetterWordMain.send4LetterWord;
 import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import org.apache.zookeeper.TestableZooKeeper;

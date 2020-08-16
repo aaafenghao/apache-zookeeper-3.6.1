@@ -24,3 +24,5 @@ call %JAVA% "-Dzookeeper.log.dir=%ZOO_LOG_DIR%" "-Dzookeeper.root.logger=%ZOO_LO
 
 endlocal
 
+pause
+

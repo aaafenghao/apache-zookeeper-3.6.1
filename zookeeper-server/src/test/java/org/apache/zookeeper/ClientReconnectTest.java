@@ -27,8 +27,7 @@ import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import org.apache.zookeeper.client.HostProvider;
-import org.apache.zookeeper.client.ZKClientConfig;
+
 import org.junit.Test;
 
 public class ClientReconnectTest extends ZKTestCase {

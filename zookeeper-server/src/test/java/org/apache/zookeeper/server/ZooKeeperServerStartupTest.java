@@ -18,7 +18,7 @@
 
 package org.apache.zookeeper.server;
 
-import static org.apache.zookeeper.client.FourLetterWordMain.send4LetterWord;
+import static org.apache.zookeeper.FourLetterWordMain.send4LetterWord;
 import static org.apache.zookeeper.server.command.AbstractFourLetterCommand.ZK_NOT_SERVING;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

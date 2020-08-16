@@ -48,7 +48,7 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.X509KeyManager;
 import javax.net.ssl.X509TrustManager;
 import org.apache.zookeeper.PortAssignment;
-import org.apache.zookeeper.client.ZKClientConfig;
+import org.apache.zookeeper.ZKClientConfig;
 import org.apache.zookeeper.server.ServerCnxnFactory;
 import org.junit.After;
 import org.junit.Before;

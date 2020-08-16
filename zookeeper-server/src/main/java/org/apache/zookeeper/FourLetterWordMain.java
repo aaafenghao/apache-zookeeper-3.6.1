@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.apache.zookeeper.client;
+package org.apache.zookeeper;
 
 import java.io.BufferedReader;
 import java.io.IOException;

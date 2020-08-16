@@ -33,7 +33,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 import org.apache.zookeeper.ClientCnxn.EndOfStreamException;
 import org.apache.zookeeper.ClientCnxn.Packet;
 import org.apache.zookeeper.ZooDefs.OpCode;
-import org.apache.zookeeper.client.ZKClientConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -101,6 +100,7 @@ public class ClientCnxnSocketNIO extends ClientCnxnSocket {
             }
         }
         if (sockKey.isWritable()) {
+            //查找需要发送的包
             Packet p = findSendablePacket(outgoingQueue, sendThread.tunnelAuthInProgress());
 
             if (p != null) {
@@ -117,10 +117,12 @@ public class ClientCnxnSocketNIO extends ClientCnxnSocket {
                 sock.write(p.bb);
                 if (!p.bb.hasRemaining()) {
                     sentCount.getAndIncrement();
+                    //队列清除包
                     outgoingQueue.removeFirstOccurrence(p);
                     if (p.requestHeader != null
                         && p.requestHeader.getType() != OpCode.ping
                         && p.requestHeader.getType() != OpCode.auth) {
+                        //等待队列添加
                         synchronized (pendingQueue) {
                             pendingQueue.add(p);
                         }
@@ -339,12 +341,15 @@ public class ClientCnxnSocketNIO extends ClientCnxnSocket {
         for (SelectionKey k : selected) {
             SocketChannel sc = ((SocketChannel) k.channel());
             if ((k.readyOps() & SelectionKey.OP_CONNECT) != 0) {
+                //连接通道是否完成
                 if (sc.finishConnect()) {
                     updateLastSendAndHeard();
                     updateSocketAddresses();
+                    //session的设置,watcher的设置,认证等
                     sendThread.primeConnection();
                 }
             } else if ((k.readyOps() & (SelectionKey.OP_READ | SelectionKey.OP_WRITE)) != 0) {
+                //读或者写
                 doIO(pendingQueue, cnxn);
             }
         }

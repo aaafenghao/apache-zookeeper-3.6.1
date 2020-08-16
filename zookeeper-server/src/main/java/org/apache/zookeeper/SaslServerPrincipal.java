@@ -20,7 +20,7 @@ package org.apache.zookeeper;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import org.apache.zookeeper.client.ZKClientConfig;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

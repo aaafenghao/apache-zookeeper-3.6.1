@@ -119,12 +119,14 @@ public class QuorumPeerMain {
     }
 
     protected void initializeAndRun(String[] args) throws ConfigException, IOException, AdminServerException {
+        //配置类
         QuorumPeerConfig config = new QuorumPeerConfig();
         if (args.length == 1) {
             config.parse(args[0]);
         }
 
         // Start and schedule the the purge task
+        //启动并安排清理任务
         DatadirCleanupManager purgeMgr = new DatadirCleanupManager(
             config.getDataDir(),
             config.getDataLogDir(),
@@ -133,10 +135,12 @@ public class QuorumPeerMain {
         purgeMgr.start();
 
         if (args.length == 1 && config.isDistributed()) {
+            //集群方式运行
             runFromConfig(config);
         } else {
             LOG.warn("Either no config or no quorum defined in config, running in standalone mode");
             // there is only server in the quorum -- run as standalone
+            //单机版运行
             ZooKeeperServerMain.main(args);
         }
     }
