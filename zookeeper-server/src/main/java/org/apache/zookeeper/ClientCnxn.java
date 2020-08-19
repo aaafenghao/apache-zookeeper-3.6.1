@@ -507,6 +507,7 @@ public class ClientCnxn {
                 watchers = new HashSet<Watcher>();
                 watchers.addAll(materializedWatchers);
             }
+            //拼接到Pair,添加到队列中
             WatcherSetEventPair pair = new WatcherSetEventPair(watchers, event);
             // queue the pair (watch set & event) for later processing
             waitingEvents.add(pair);
@@ -865,15 +866,16 @@ public class ClientCnxn {
 
             replyHdr.deserialize(bbia, "header");
             switch (replyHdr.getXid()) {
-            case PING_XID:
+            case PING_XID://ping
                 LOG.debug("Got ping response for session id: 0x{} after {}ms.",
                     Long.toHexString(sessionId),
                     ((System.nanoTime() - lastPingSentNs) / 1000000));
                 return;
-              case AUTHPACKET_XID:
+              case AUTHPACKET_XID://auth
                 LOG.debug("Got auth session id: 0x{}", Long.toHexString(sessionId));
                 if (replyHdr.getErr() == KeeperException.Code.AUTHFAILED.intValue()) {
                     state = States.AUTH_FAILED;
+                    //添加事件信息到队列中
                     eventThread.queueEvent(new WatchedEvent(Watcher.Event.EventType.None,
                         Watcher.Event.KeeperState.AuthFailed, null));
                     eventThread.queueEventOfDeath();
@@ -1558,6 +1560,8 @@ public class ClientCnxn {
             } else {
                 // Wait for request completion infinitely
                 while (!packet.finished) {
+                    //看SendThread
+                    //EventThread
                     packet.wait();
                 }
             }

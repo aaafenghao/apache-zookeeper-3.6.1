@@ -99,4 +99,21 @@ create /no
    2. 快照 Database 文件
    3. 更新内存,操作DataTree
    4. 返回错误或者正确信息
+   
+
+Watcher
+客户端:
+SendThread-->读取Watcher信息-->添加到事件队列中
+EventThread-->循环处理队列中的信息
+getData-->Pair<nodename,Watcher>
+接受事件-->循环判断-->删除Watcher
+客户端不会将Watcher传递到服务端,只是会封装到Packer中,读取响应,然后判断是否需要添加响应时间
+服务端:
+setData-->node:NIOServerCnx
+触发事件-->nodename-->NIO.process
+
+
+ACL
+
+CloseSession
 
